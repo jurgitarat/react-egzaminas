@@ -1,9 +1,8 @@
 import React from 'react';
-//import { useState } from "react";
+import { useState } from "react";
 //import logo from './logo.svg';
 import './App.css';
 import { Routes, Route } from 'react-router-dom';
-
 import { RegisterPage } from './views/RegisterPage/RegisterPage';
 import { HomePage } from './views/HomePage/HomePage';
 import { LoginPage } from './views/LoginPage/LoginPage';
@@ -15,16 +14,20 @@ import { Navigation } from './components/navi/navi';
 // const AddPage = React.lazy(() => import('./views/AddPage/AddPage'));
 
 function App() {
-
+  const [userToken, setUserToken] = useState(null);
+  const handleLogin = (token) => {
+    setUserToken(token)
+  };
+  
   return (
     <div className="App">
       
-      <Navigation />
+      <Navigation  token={userToken}  />
     
       <Routes>
-        <Route path="/" element={<HomePage />} />
+        <Route path="/" element={<HomePage token={userToken} />} />
         <Route path="/register" element={<RegisterPage />} />
-        <Route path="/login" element={<LoginPage />} />
+        <Route path="/login" element={<LoginPage  onLogin={handleLogin}  />} />
         <Route path="/add" element={<AddPage />} />
       </Routes>
 
