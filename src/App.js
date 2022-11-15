@@ -1,24 +1,36 @@
 import React from 'react';
-import logo from './logo.svg';
+//import { useState } from "react";
+//import logo from './logo.svg';
 import './App.css';
+import { Routes, Route } from 'react-router-dom';
+
+import { RegisterPage } from './views/RegisterPage/RegisterPage';
+import { HomePage } from './views/HomePage/HomePage';
+import { LoginPage } from './views/LoginPage/LoginPage';
+import { AddPage } from './views/AddPage/AddPage';
+import { Navigation } from './components/navi/navi';
+// const HomePage = React.lazy(() => import('./views/HomePage/HomePage'));
+//const RegisterPage = React.lazy(() => import('./views/RegisterPage/RegisterPage'));
+// const LoginPage = React.lazy(() => import('./views/LoginPage/LoginPage'));
+// const AddPage = React.lazy(() => import('./views/AddPage/AddPage'));
 
 function App() {
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      
+      <Navigation />
+    
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/register" element={<RegisterPage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/add" element={<AddPage />} />
+      </Routes>
+
+
+      
+      
     </div>
   );
 }
