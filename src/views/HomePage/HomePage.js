@@ -46,8 +46,8 @@ export const HomePage = (user) => {
   }, []);
     return (
         <div>
-        {results && <div class='wrapper'>{results}</div>}
-        {Status && <p classname='notification'>{Status}</p>}
+        {results && <div className='wrapper'>{results}</div>}
+        {Status && <p className='notification'>{Status}</p>}
         </div>
     
     )

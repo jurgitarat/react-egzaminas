@@ -1,10 +1,18 @@
 import React from 'react';
-import {useState } from "react";
+import {useEffect, useState } from "react";
+import { useNavigate } from 'react-router-dom';
+import "./AddPage.css";
 export const AddPage = (user) => {
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
     const [Status, setStatus] = useState("");
-
+    const navigate = useNavigate();
+  useEffect(() => {
+    if (!user.token){
+        navigate("/login");
+    }
+}
+  );
     const sendToServer = (e) => {
         e.preventDefault();
         fetch('https://autumn-delicate-wilderness.glitch.me/v1/content/skills', {
@@ -42,7 +50,7 @@ return (
             <textarea placeholder='description' onChange={handleDescriptionChange} />
             <button>Send to Server</button>
         </form>
-        {Status && <p class='notification'>{Status}</p>}
+        {Status && <p className='notification'>{Status}</p>}
     </div>
 )
 }

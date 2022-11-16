@@ -27,11 +27,21 @@ export const RegisterPage = () => {
                 if (data.err){
                     setStatus(data.err);
                 }
+                else if (data.error){
+                    setStatus(data.error);
+                }
                 else{
-                    setStatus("User has been registered successfully");
+                    if (data.lastID){
+                    setStatus("User created succesfully. ID: " + data.lastID);
+                    }
+                    else {
+                        setStatus("Unexpected response from server");
+                    }
                 }
               })
-              .catch()
+              .catch((error) => {
+                 setStatus(error);
+              })
               ;
         //  }, []);
         }
@@ -48,7 +58,7 @@ export const RegisterPage = () => {
                 <input type="password" placeholder="Password"  onChange={handlePasswordChange} />
                 <button>Login</button>
             </form>
-            {Status && <p class='notification'>{Status}</p>}
+            {Status && <p className='notification'>{Status}</p>}
         </div>
     )
 }

@@ -45,7 +45,7 @@ export const LoginPage = ({onLogin}) => {
                 <input type="password" placeholder="Password"  onChange={handlePasswordChange} />
                 <button>Login</button>
             </form>
-            {Status && <p class='notification'>{Status}</p>}
+            {Status && <p className='notification'>{Status}</p>}
         </div>
     )
     }
