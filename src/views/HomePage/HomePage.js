@@ -1,12 +1,17 @@
 import React from 'react';
 import {useEffect, useState } from "react";
+import { useNavigate } from 'react-router-dom';
+import "./HomePage.css";
 export const HomePage = (user) => {
     const [results, setResults] = useState("");
     const [Status, setStatus] = useState("");
 
+    const navigate = useNavigate();
     
   useEffect(() => {
-
+    if (!user.token){
+        navigate("/login");
+    }
     console.log(results);
     setStatus("Error: no results loaded yet")
     fetch('https://autumn-delicate-wilderness.glitch.me/v1/content/skills', {
@@ -41,8 +46,7 @@ export const HomePage = (user) => {
   }, []);
     return (
         <div>
-        
-        {results && <div classname='wrapper'>{results}</div>}
+        {results && <div class='wrapper'>{results}</div>}
         {Status && <p classname='notification'>{Status}</p>}
         </div>
     
