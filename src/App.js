@@ -28,7 +28,7 @@ function App() {
         <Route path="/" element={<HomePage token={userToken} />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage  onLogin={handleLogin}  />} />
-        <Route path="/add" element={<AddPage />} />
+        <Route path="/add" element={<AddPage token={userToken} />} />
       </Routes>
 
 

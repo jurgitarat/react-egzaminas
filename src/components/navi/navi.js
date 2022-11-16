@@ -1,10 +1,10 @@
 import React from 'react';
-import { Link , useLocation} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './navi.css';
 
 export const Navigation = (user) => {
     
-  const location = useLocation();
+  //const location = useLocation();
   if (!user.token) {
     return (
     <div className='navigacija'>
