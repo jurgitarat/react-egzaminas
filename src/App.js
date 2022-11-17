@@ -17,45 +17,43 @@ function App() {
   };
   return (
     <div className="App">
-      
-      <Navigation  token={userToken}  />
-    
+      <Navigation token={userToken} />
       <Routes>
         <Route path="/" element={
-        
-        <RouteSuspense>
-        <HomePage token={userToken} />
-        
-        </RouteSuspense>
+
+          <RouteSuspense>
+            <HomePage token={userToken} />
+
+          </RouteSuspense>
         } />
         <Route path="/register" element={
-        
-        <RouteSuspense>
-        <RegisterPage />
-        
-        </RouteSuspense>
+
+          <RouteSuspense>
+            <RegisterPage />
+
+          </RouteSuspense>
         } />
         <Route path="/login" element={
-        
-        <RouteSuspense>
-        <LoginPage  onLogin={handleLogin}  />
-        
-        </RouteSuspense>
-        
+
+          <RouteSuspense>
+            <LoginPage onLogin={handleLogin} />
+
+          </RouteSuspense>
+
         } />
         <Route path="/add" element={
-        
-        <RouteSuspense>
-        <AddPage token={userToken} />
-        
-        </RouteSuspense>
-        
+
+          <RouteSuspense>
+            <AddPage token={userToken} />
+
+          </RouteSuspense>
+
         } />
       </Routes>
 
 
-      
-      
+
+
     </div>
   );
 }
