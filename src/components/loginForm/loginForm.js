@@ -6,7 +6,7 @@ export const LoginForm = ({ submit }, { handleUChange }, handlePChange) => {
             <form onSubmit={submit} >
                 <input placeholder="Username" name="Username" onChange={handleUChange} />
                 <input type="password" placeholder="Password" name="Password" onChange={handlePChange} />
-                <button>Login</button>
+                <button>Submit</button>
             </form>
         </div>
     )
