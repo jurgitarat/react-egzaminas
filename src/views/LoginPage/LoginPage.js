@@ -1,19 +1,19 @@
 import React from 'react';
 import { useState } from "react";
 import { useNavigate } from 'react-router-dom';
+import { BASE_URL } from '../../constants/global';
+import { LoginForm } from '../../components/loginForm/loginForm';
 export const LoginPage = ({ onLogin }) => {
 
-    const [Username, setUsername] = useState("");
-    const [Password, setPassword] = useState("");
     const [Status, setStatus] = useState("");
     const navigate = useNavigate();
     const doLogin = (e) => {
         e.preventDefault();
-        fetch('https://autumn-delicate-wilderness.glitch.me/v1/auth/login', {
+        fetch(BASE_URL + 'v1/auth/login', {
             method: 'POST',
             body: JSON.stringify({
-                email: Username,
-                password: Password,
+                email: e.target.Username.value,
+                password: e.target.Password.value,
             }),
             headers: {
                 'Content-Type': 'application/json'
@@ -30,21 +30,12 @@ export const LoginPage = ({ onLogin }) => {
                     navigate('/');
                 }
             })
-            .catch()
-
-            ;
+            .catch();
     }
-
-    const handleUsernameChange = (e) => setUsername(e.target.value);
-    const handlePasswordChange = (e) => setPassword(e.target.value);
     return (
         <div>
             <h1>Login Form</h1>
-            <form onSubmit={doLogin}>
-                <input placeholder="Username" onChange={handleUsernameChange} />
-                <input type="password" placeholder="Password" onChange={handlePasswordChange} />
-                <button>Login</button>
-            </form>
+            <LoginForm submit={doLogin} />
             {Status && <p className='notification'>{Status}</p>}
         </div>
     )

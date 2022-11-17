@@ -1,6 +1,7 @@
 import React from 'react';
 import { useEffect, useState } from "react";
 import { useNavigate } from 'react-router-dom';
+import { BASE_URL } from '../../constants/global';
 import "./AddPage.css";
 export const AddPage = (user) => {
     const [title, setTitle] = useState("");
@@ -15,7 +16,7 @@ export const AddPage = (user) => {
     );
     const sendToServer = (e) => {
         e.preventDefault();
-        fetch('https://autumn-delicate-wilderness.glitch.me/v1/content/skills', {
+        fetch(BASE_URL + '/v1/content/skills', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
